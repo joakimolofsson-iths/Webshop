@@ -15,7 +15,10 @@ namespace Frontend.Services
 		{
 			return await _httpClient.GetFromJsonAsync<List<Book>>("api/books") ?? new List<Book>();
 		}
+
+		public async Task<Book?> GetBookAsync(int id)
+		{
+			return await _httpClient.GetFromJsonAsync<Book>($"api/books/{id}");
+		}
 	}
 }
-
-

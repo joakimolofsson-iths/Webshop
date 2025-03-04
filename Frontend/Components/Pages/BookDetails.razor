@@ -1,0 +1,34 @@
+﻿@page "/books/{id:int}"
+@inject Frontend.Services.BookService BookService
+@using Models
+
+<h3>HorrorBookDetails</h3>
+
+@if (_book == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div>
+        <img src="@_book.ImageUrl" width="400" />
+        <p>Name: @_book.Name</p>
+        <p>Author: @_book.Author</p>
+        <p>Description: @_book.Description</p>
+        <p>Release Year: @_book.ReleaseYear</p>
+        <p>Pages: @_book.Pages</p>
+        <p>Rating: @_book.Rating</p>
+        <p>Award: @_book.Award</p>
+        <p>Price: $@_book.Price</p>
+    </div>
+}
+
+@code {
+    [Parameter] public int id { get; set; }
+    private Book? _book;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _book = await BookService.GetBookAsync(id);
+    }
+}
