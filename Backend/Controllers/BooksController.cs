@@ -21,25 +21,25 @@ namespace Backend.Controllers
 		[HttpGet]
 		public async Task<ActionResult<IEnumerable<Book>>> Get()
 		{
-			var horrorBooks = await ReadHorrorBooksFromFile();
-			return Ok(horrorBooks);
+			var books = await ReadBooksFromFile();
+			return Ok(books);
 		}
 
 		[HttpGet("{id}")]
 		public async Task<ActionResult<Book>> Get(int id)
 		{
-			var horrorBooks = await ReadHorrorBooksFromFile();
-			var horrorBook = horrorBooks.FirstOrDefault(hb => hb.Id == id);
+			var books = await ReadBooksFromFile();
+			var book = books.FirstOrDefault(hb => hb.Id == id);
 
-			if (horrorBook == null)
+			if (book == null)
 			{
 				return NotFound();
 			}
 
-			return Ok(horrorBook);
+			return Ok(book);
 		}
 
-		private async Task<List<Book>> ReadHorrorBooksFromFile()
+		private async Task<List<Book>> ReadBooksFromFile()
 		{
 			if (!System.IO.File.Exists(_jsonFilePath))
 			{
@@ -47,7 +47,7 @@ namespace Backend.Controllers
 			}
 
 			var jsonData = await System.IO.File.ReadAllTextAsync(_jsonFilePath);
-			return JsonSerializer.Deserialize<List<Book>>(jsonData, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? new List<HorrorBook>();
+			return JsonSerializer.Deserialize<List<Book>>(jsonData, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? new List<Book>();
 		}
 	}
 }
