@@ -399,5 +399,6 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
-# Ignore all images inside wwwroot/images/
+# Ignore folders in wwwroot
 Backend/wwwroot/images/book-covers
+Frontend/wwwroot/videos
