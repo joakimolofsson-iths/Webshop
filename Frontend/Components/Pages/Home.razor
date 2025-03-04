@@ -1,13 +1,21 @@
 ﻿@page "/"
-@inject Frontend.Services.BookService BookService
 @using Models
+@inject Frontend.Services.BookService BookService
+@inject IJSRuntime JS
+@rendermode InteractiveServer
 
 <PageTitle>Home</PageTitle>
 
-<video id="myVideo" width="1200" height="600" autoplay loop>
-    <source src="/videos/blood_book.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+@if (!isLoaded)
+{
+    <p>Loading video...</p>
+}
+else
+{
+    <video id="myVideo" width="1200" height="600" autoplay loop muted>
+        <source src="videos/blood_book.mp4" type="video/mp4">
+    </video>
+}
 
 <h1>Horror Books Shop</h1>
 
@@ -31,6 +39,17 @@ else
 
 @code {
     private List<Book> _books = new();
+    private bool isLoaded = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            isLoaded = true;
+            StateHasChanged(); // Forces Blazor to render the <video> element
+            await JS.InvokeVoidAsync("playVideo", "myVideo");
+        }
+    }
 
     protected override async Task OnInitializedAsync()
     {
