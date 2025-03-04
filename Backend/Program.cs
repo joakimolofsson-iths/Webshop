@@ -32,6 +32,8 @@ namespace Backend
 
 			app.UseHttpsRedirection();
 
+			app.UseStaticFiles();
+
 			// Enable CORS
 			app.UseCors("AllowFrontend");
 

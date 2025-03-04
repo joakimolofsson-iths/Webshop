@@ -9,7 +9,7 @@
     "rating": 4.8,
     "award": "Locus Award for Best Novel (1978)",
     "price": 15.99,
-    "imageUrl": "/images/book-covers/the-shining.jpg"
+    "imageUrl": "https://localhost:7206/images/book-covers/the-shining.jpg"
   },
   {
     "id": 2,
@@ -21,7 +21,7 @@
     "rating": 4.6,
     "award": "None",
     "price": 12.99,
-    "imageUrl": "/images/book-covers/dracula.jpg"
+    "imageUrl": "https://localhost:7206/images/book-covers/dracula.jpg"
   },
   {
     "id": 3,
@@ -33,7 +33,7 @@
     "rating": 4.7,
     "award": "British Fantasy Award (1987)",
     "price": 19.99,
-    "imageUrl": "/images/book-covers/it.jpg"
+    "imageUrl": "https://localhost:7206/images/book-covers/it.jpg"
   },
   {
     "id": 4,
@@ -45,7 +45,7 @@
     "rating": 4.5,
     "award": "None",
     "price": 18.99,
-    "imageUrl": "/images/book-covers/house-of-leaves.jpg"
+    "imageUrl": "https://localhost:7206/images/book-covers/house-of-leaves.jpg"
   },
   {
     "id": 5,
@@ -57,7 +57,7 @@
     "rating": 4.4,
     "award": "National Book Award Finalist (1960)",
     "price": 14.99,
-    "imageUrl": "/images/book-covers/the-haunting-of-hill-house.jpg"
+    "imageUrl": "https://localhost:7206/images/book-covers/the-haunting-of-hill-house.jpg"
   },
   {
     "id": 6,
@@ -69,7 +69,7 @@
     "rating": 4.6,
     "award": "None",
     "price": 16.99,
-    "imageUrl": "/images/book-covers/pet-sematary.jpg"
+    "imageUrl": "https://localhost:7206/images/book-covers/pet-sematary.jpg"
   },
   {
     "id": 7,
@@ -81,7 +81,7 @@
     "rating": 4.5,
     "award": "None",
     "price": 11.99,
-    "imageUrl": "/images/book-covers/frankenstein.jpg"
+    "imageUrl": "https://localhost:7206/images/book-covers/frankenstein.jpg"
   },
   {
     "id": 8,
@@ -93,7 +93,7 @@
     "rating": 4.7,
     "award": "None",
     "price": 17.99,
-    "imageUrl": "/images/book-covers/the-exorcist.jpg"
+    "imageUrl": "https://localhost:7206/images/book-covers/the-exorcist.jpg"
   },
   {
     "id": 9,
@@ -105,7 +105,7 @@
     "rating": 4.8,
     "award": "Bram Stoker Award for Best Novel (1988)",
     "price": 14.99,
-    "imageUrl": "/images/book-covers/the-silence-of-the-lambs.jpg"
+    "imageUrl": "https://localhost:7206/images/book-covers/the-silence-of-the-lambs.jpg"
   },
   {
     "id": 10,
@@ -117,6 +117,6 @@
     "rating": 4.5,
     "award": "None",
     "price": 13.99,
-    "imageUrl": "/images/book-covers/hell-house.jpg"
+    "imageUrl": "https://localhost:7206/images/book-covers/hell-house.jpg"
   }
 ]
