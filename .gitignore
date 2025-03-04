@@ -398,3 +398,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Ignore all images inside wwwroot/images/
+Webshop/Backend/wwwroot/images/book-covers
