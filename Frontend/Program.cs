@@ -1,4 +1,5 @@
 using Frontend.Components;
+using Frontend.Services;
 
 namespace Frontend
 {
@@ -12,7 +13,14 @@ namespace Frontend
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
 
-            var app = builder.Build();
+			builder.Services.AddHttpClient("BackendAPI", client =>
+			{
+				client.BaseAddress = new Uri("https://localhost:7206/");
+			});
+
+			builder.Services.AddScoped<BookService>();
+
+			var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())

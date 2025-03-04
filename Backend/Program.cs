@@ -17,7 +17,7 @@ namespace Backend
 			builder.Services.AddCors(options =>
 			{
 				options.AddPolicy("AllowFrontend", policy =>
-					policy.WithOrigins("https://localhost:5002") // Adjust this to your frontend URL
+					policy.WithOrigins("https://localhost:7290") // Adjust this to your frontend URL
 						  .AllowAnyMethod()
 						  .AllowAnyHeader());
 			});

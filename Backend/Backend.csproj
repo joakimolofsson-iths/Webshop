@@ -14,4 +14,8 @@
     <Folder Include="wwwroot\images\book-covers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj" />
+  </ItemGroup>
+
 </Project>
