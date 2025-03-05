@@ -1,5 +1,5 @@
 ﻿@page "/books/{id:int}"
-@inject Frontend.Services.BookService BookService
+@inject Frontend.Services.BookService bookService
 @using Models
 
 <h3>HorrorBookDetails</h3>
@@ -29,6 +29,6 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        _book = await BookService.GetBookAsync(id);
+        _book = await bookService.GetBookAsync(id);
     }
 }
