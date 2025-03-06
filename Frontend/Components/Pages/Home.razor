@@ -1,7 +1,7 @@
 ﻿@page "/"
 @using Models
+@using Frontend.Components.Pages.UIComponents
 @inject Frontend.Services.BookService bookService
-@inject Blazored.LocalStorage.ILocalStorageService localStorage
 @rendermode InteractiveServer
 
 <PageTitle>Home</PageTitle>
@@ -16,30 +16,15 @@ else
 {
     @foreach (var book in _books)
     {
-        <div class="bookContainer">
-            <img src="@book.ImageUrl" width="200" />
-            <p>@book.Name</p>
-            <p>@book.Author</p>
-            <p>@book.Price</p>
-            <a href="/books/@book.Id">Product Page</a>
-            <button @onclick='() => SaveBook(book.Name)'>Add to cart</button>
-            <p>@_name</p>
-        </div>
+        <BookProduct Book=book/>
     }
 }
 
 @code {
     private List<Book> _books = new();
-    private string? _name;
-
-    private async Task SaveBook(string name)
-    {
-        await localStorage.SetItemAsync("Book Name", name);
-        _name = "Book added to cart!";
-    }
 
     protected override async Task OnInitializedAsync()
     {
-        _books = await bookService.GetBooksAsync();
+        _books = await bookService.GetBooksAsync() ?? new List<Book>();
     }
 }
