@@ -1,5 +1,5 @@
 ﻿@using Models
-@inject Blazored.LocalStorage.ILocalStorageService localStorage
+@using Frontend.Components.Pages.UIComponents
 
 <div class="bookContainer">
     <img src="@book.ImageUrl" width="200" />
@@ -7,18 +7,10 @@
     <p>@book.Author</p>
     <p>@book.Price</p>
     <a href="/books/@book.Id">Product Page</a>
-    <button @onclick='() => SaveBook(book.Name)'>Add to cart</button>
-    <p>@_status</p>
+    <AddRemoveBook BookId=book.Id/>
 </div>
 
 @code {
     [Parameter]
     public required Book book { get; set; }
-    private string? _status;
-
-    private async Task SaveBook(string name)
-    {
-        await localStorage.SetItemAsync("ID", book.Id);
-        _status = "Book added to cart!";
-    }
 }
