@@ -1,6 +1,8 @@
 ﻿@page "/books/{id:int}"
-@inject Frontend.Services.BookService BookService
 @using Models
+@using Frontend.Components.Pages.UIComponents
+@inject Frontend.Services.BookService bookService
+@rendermode InteractiveServer
 
 <h3>HorrorBookDetails</h3>
 
@@ -20,15 +22,17 @@ else
         <p>Rating: @_book.Rating</p>
         <p>Award: @_book.Award</p>
         <p>Price: $@_book.Price</p>
+        <AddRemoveBook BookId=@_book.Id />
     </div>
 }
 
 @code {
-    [Parameter] public int id { get; set; }
+    [Parameter]
+    public int id { get; set; }
     private Book? _book;
 
     protected override async Task OnInitializedAsync()
     {
-        _book = await BookService.GetBookAsync(id);
+        _book = await bookService.GetBookAsync(id);
     }
 }

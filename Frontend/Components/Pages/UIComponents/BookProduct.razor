@@ -1,0 +1,16 @@
+﻿@using Models
+@using Frontend.Components.Pages.UIComponents
+
+<div class="bookContainer">
+    <img src="@book.ImageUrl" width="200" />
+    <p>@book.Name</p>
+    <p>@book.Author</p>
+    <p>@book.Price</p>
+    <a href="/books/@book.Id">Product Page</a>
+    <AddRemoveBook BookId=book.Id/>
+</div>
+
+@code {
+    [Parameter]
+    public required Book book { get; set; }
+}

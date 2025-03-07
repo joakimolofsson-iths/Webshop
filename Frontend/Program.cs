@@ -1,3 +1,4 @@
+using Blazored.LocalStorage;
 using Frontend.Components;
 using Frontend.Services;
 
@@ -19,6 +20,8 @@ namespace Frontend
 			});
 
 			builder.Services.AddScoped<BookService>();
+
+			builder.Services.AddBlazoredLocalStorage();
 
 			var app = builder.Build();
 

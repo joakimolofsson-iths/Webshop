@@ -13,15 +13,6 @@ namespace Backend
 			// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 			builder.Services.AddOpenApi();
 
-			// Add CORS policy to allow frontend access
-			builder.Services.AddCors(options =>
-			{
-				options.AddPolicy("AllowFrontend", policy =>
-					policy.WithOrigins("https://localhost:7290") // Adjust this to your frontend URL
-						  .AllowAnyMethod()
-						  .AllowAnyHeader());
-			});
-
 			var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
@@ -33,9 +24,6 @@ namespace Backend
 			app.UseHttpsRedirection();
 
 			app.UseStaticFiles();
-
-			// Enable CORS
-			app.UseCors("AllowFrontend");
 
 			app.UseAuthorization();
 
