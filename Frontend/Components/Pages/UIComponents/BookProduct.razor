@@ -7,10 +7,8 @@
     <p>@book.Author</p>
     <p>@book.Price</p>
     <a href="/books/@book.Id">Product Page</a>
-    <AddRemoveBook BookId=book.Id/>
 </div>
 
 @code {
-    [Parameter]
-    public required Book book { get; set; }
+    [Parameter] public required Book book { get; set; }
 }

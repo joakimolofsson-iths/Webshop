@@ -1,47 +1,4 @@
-﻿@inject Blazored.LocalStorage.ILocalStorageService localStorage
-
-<div>
-	<button @onclick='() => AddRemove("Add")'>Add To Cart</button>
-	<button @onclick='() => AddRemove("Remove")'>Remove From Cart</button>
-	<p>@_status</p>
-</div>
+﻿
 
 @code {
-	[Parameter]
-	public int BookId { get; set; }
-	private List<int> _cart = new();
-	private string _status = string.Empty;
-
-	private async Task AddRemove(string option)
-	{
-		_cart = await localStorage.GetItemAsync<List<int>>("cart") ?? new List<int>();
-
-		if(option == "Add")
-		{
-			if (!_cart.Contains(BookId))
-			{
-				_cart.Add(BookId);
-				_status = "Book added to cart!";
-			}
-			else
-			{
-				_status = "Book already in cart!";
-			}
-		}
-		else if(option == "Remove")
-		{
-			if (_cart.Contains(BookId))
-			{
-				_cart.Remove(BookId);
-				_status = "Book removed from cart!";
-			}
-			else
-			{
-				_status = "No such book in cart!";
-			}
-		}
-
-		await localStorage.SetItemAsync("cart", _cart);
-		StateHasChanged();
-	}
 }
