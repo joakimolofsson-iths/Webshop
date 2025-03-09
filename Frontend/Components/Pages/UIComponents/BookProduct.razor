@@ -2,13 +2,16 @@
 @using Frontend.Components.Pages.UIComponents
 
 <div class="bookContainer">
-    <img src="@book.ImageUrl" width="200" />
-    <p>@book.Name</p>
-    <p>@book.Author</p>
-    <p>@book.Price</p>
-    <a href="/books/@book.Id">Product Page</a>
+    <img src="@Book.ImageUrl" width="200" />
+    <p>@Book.Name</p>
+    <p>@Book.Author</p>
+    <p>@Book.Price</p>
+    <a href="/books/@Book.Id">Product Page</a>
+    <AddRemove BookId=Book.Id Cart=Cart Setting="add" />
+    <AddRemove BookId=Book.Id Cart=Cart Setting="remove" />
 </div>
 
 @code {
-    [Parameter] public required Book book { get; set; }
+    [Parameter] public required Book Book { get; set; }
+    [Parameter] public required List<int> Cart { get; set; }
 }

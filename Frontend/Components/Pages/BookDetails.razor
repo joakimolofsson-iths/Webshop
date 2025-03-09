@@ -2,6 +2,7 @@
 @using Models
 @using Frontend.Components.Pages.UIComponents
 @inject Frontend.Services.BookService bookService
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
 @rendermode InteractiveServer
 
 <h3>HorrorBookDetails</h3>
@@ -22,16 +23,28 @@ else
         <p>Rating: @_book.Rating</p>
         <p>Award: @_book.Award</p>
         <p>Price: $@_book.Price</p>
+        <AddRemove BookId=_book.Id Cart=_cart Setting="add" />
+        <AddRemove BookId=_book.Id Cart=_cart Setting="remove" />
     </div>
 }
 
 @code {
-    [Parameter]
-    public int id { get; set; }
+    [Parameter] public int id { get; set; }
+
     private Book? _book;
+    private List<int> _cart = new();
 
     protected override async Task OnInitializedAsync()
     {
         _book = await bookService.GetBookAsync(id);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(firstRender)
+        {
+            _cart = await localStorage.GetItemAsync<List<int>>("cart") ?? new List<int>();
+            StateHasChanged();
+        };
     }
 }

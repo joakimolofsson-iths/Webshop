@@ -2,6 +2,7 @@
 @using Models
 @using Frontend.Components.Pages.UIComponents
 @inject Frontend.Services.BookService bookService
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
 @rendermode InteractiveServer
 
 <PageTitle>Home</PageTitle>
@@ -17,15 +18,25 @@ else
 {
     @foreach (var book in _books)
     {
-        <BookProduct Book=book/>
+        <BookProduct Book=book Cart=_cart />
     }
 }
 
 @code {
     private List<Book> _books = new();
+    private List<int> _cart = new();
 
     protected override async Task OnInitializedAsync()
     {
         _books = await bookService.GetBooksAsync() ?? new List<Book>();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _cart = await localStorage.GetItemAsync<List<int>>("cart") ?? new List<int>();
+            StateHasChanged();
+        };
     }
 }

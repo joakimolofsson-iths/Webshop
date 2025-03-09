@@ -1,0 +1,48 @@
+﻿@inject Blazored.LocalStorage.ILocalStorageService localStorage
+
+<button @onclick="AddOrRemove">
+	@(Setting == "add" ? "Add" : "Remove")
+</button>
+
+<p>@_status</p>
+
+@code {
+	[Parameter] public int BookId { get; set; }
+	[Parameter] public required List<int> Cart { get; set; }
+	[Parameter] public required string Setting { get; set; }
+
+	private string _status = string.Empty;
+
+	private async Task AddOrRemove()
+	{
+		if (Setting == "add")
+		{
+			if (Cart.Contains(BookId))
+			{
+				UpdateStatus("Book already in cart!");
+				return;
+			};
+
+			Cart.Add(BookId);
+			await localStorage.SetItemAsync("cart", Cart);
+			UpdateStatus("Book added to cart!");
+		}
+		else if (Setting == "remove")
+		{
+			if (!Cart.Contains(BookId))
+			{
+				UpdateStatus("Book is not in cart!");
+				return;
+			};
+
+			Cart.Remove(BookId);
+			await localStorage.SetItemAsync("cart", Cart);
+			UpdateStatus("Book removed from cart!");
+		};
+	}
+
+	private void UpdateStatus(string statusMessage)
+	{
+		_status = statusMessage;
+	}
+}
