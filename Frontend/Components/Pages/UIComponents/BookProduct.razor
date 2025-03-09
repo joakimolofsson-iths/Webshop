@@ -8,10 +8,11 @@
     <p>@Book.Price</p>
     <a href="/books/@Book.Id">Product Page</a>
     <AddRemove BookId=Book.Id Cart=Cart Setting="add" />
-    <AddRemove BookId=Book.Id Cart=Cart Setting="remove" />
+    <AddRemove BookId=Book.Id Cart=Cart Setting="remove" OnCartUpdated="OnCartUpdated" />
 </div>
 
 @code {
     [Parameter] public required Book Book { get; set; }
     [Parameter] public required List<int> Cart { get; set; }
+    [Parameter] public EventCallback<List<int>> OnCartUpdated { get; set; }
 }

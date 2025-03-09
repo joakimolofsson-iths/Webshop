@@ -7,6 +7,21 @@
 
 <h3>Cart</h3>
 
+@if (_books == null || !_books.Any())
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    @foreach (var bookId in _cart)
+    {
+        var book = _books.FirstOrDefault(b => b.Id == bookId);
+        if (book != null)
+        {
+            <BookProduct Book="book" Cart="_cart" OnCartUpdated="UpdateCart" />
+        }
+    }
+}
 
 @code {
     private List<Book> _books = new();
@@ -24,5 +39,11 @@
             _cart = await localStorage.GetItemAsync<List<int>>("cart") ?? new List<int>();
             StateHasChanged();
         };
+    }
+
+    private void UpdateCart(List<int> updatedCart)
+    {
+        _cart = updatedCart;
+        StateHasChanged();  // Trigger a re-render after cart is updated
     }
 }
