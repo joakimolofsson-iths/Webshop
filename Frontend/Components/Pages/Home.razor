@@ -7,7 +7,8 @@
 
 <PageTitle>Home</PageTitle>
 
-<a href="https://localhost:7290/cart">Cart</a>
+<ProductGrid />
+
 <h1>Horror Books Shop</h1>
 
 @if (_books == null || !_books.Any())
@@ -18,7 +19,7 @@ else
 {
     @foreach (var book in _books)
     {
-        <BookProduct Book=book Cart=_cart />
+        <Product Book=book Cart=_cart />
     }
 }
 

@@ -21,7 +21,7 @@ else
         var book = _books.FirstOrDefault(b => b.Id == bookId);
         if (book != null)
         {
-            <BookProduct Book="book" Cart="_cart" OnCartUpdated="UpdateCart" />
+            <Product Book="book" Cart="_cart" OnCartUpdated="UpdateCart" />
             _totalPrice += book.Price;
         }
     }
