@@ -3,6 +3,7 @@
 @using Frontend.Components.Pages.UIComponents
 @inject Frontend.Services.BookService bookService
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
+@inject NavigationManager Navigation
 @rendermode InteractiveServer
 
 <h3>Cart</h3>
@@ -13,19 +14,76 @@
 }
 else
 {
+    _totalPrice = 0;
+
     @foreach (var bookId in _cart)
     {
         var book = _books.FirstOrDefault(b => b.Id == bookId);
         if (book != null)
         {
             <BookProduct Book="book" Cart="_cart" OnCartUpdated="UpdateCart" />
+            _totalPrice += book.Price;
         }
     }
 }
 
+<p>Total Price: $@Math.Round(_totalPrice, 2)</p>
+
+<h3>CheckoutForm</h3>
+
+<EditForm Model="@_checkout" OnValidSubmit="HandleSubmit">
+    <DataAnnotationsValidator />
+
+    <div>
+        <label>First Name:</label>
+        <InputText @bind-Value="_checkout.FirstName" />
+        <ValidationMessage For="@(() => _checkout.FirstName)" />
+    </div>
+
+    <div>
+        <label>Last Name:</label>
+        <InputText @bind-Value="_checkout.LastName" />
+        <ValidationMessage For="@(() => _checkout.LastName)" />
+    </div>
+
+    <div>
+        <label>E-Mail:</label>
+        <InputText type="email" @bind-Value="_checkout.Email" />
+        <ValidationMessage For="@(() => _checkout.Email)" />
+    </div>
+
+    <div>
+        <label>Phone Number:</label>
+        <InputText type="tel" @bind-Value="_checkout.Phone" />
+        <ValidationMessage For="@(() => _checkout.Phone)" />
+    </div>
+
+    <div>
+        <label>City:</label>
+        <InputText @bind-Value="_checkout.City" />
+        <ValidationMessage For="@(() => _checkout.City)" />
+    </div>
+
+    <div>
+        <label>Street Address:</label>
+        <InputText @bind-Value="_checkout.Street" />
+        <ValidationMessage For="@(() => _checkout.Street)" />
+    </div>
+
+    <div>
+        <label>ZIP Code:</label>
+        <InputText type="tel" @bind-Value="_checkout.ZipCode" />
+        <ValidationMessage For="@(() => _checkout.ZipCode)" />
+    </div>
+
+    <button type="submit">Confirm Order</button>
+</EditForm>
+
 @code {
     private List<Book> _books = new();
     private List<int> _cart = new();
+    private double _totalPrice;
+    private Checkout _checkout = new Checkout();
 
     protected override async Task OnInitializedAsync()
     {
@@ -44,6 +102,13 @@ else
     private void UpdateCart(List<int> updatedCart)
     {
         _cart = updatedCart;
-        StateHasChanged();  // Trigger a re-render after cart is updated
+        StateHasChanged();
+    }
+
+    private async Task HandleSubmit()
+    {
+        await localStorage.SetItemAsync("checkoutData", _checkout);
+
+        Navigation.NavigateTo("/confirmation");
     }
 }

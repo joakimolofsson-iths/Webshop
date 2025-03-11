@@ -5,7 +5,7 @@
     <img src="@Book.ImageUrl" width="200" />
     <p>@Book.Name</p>
     <p>@Book.Author</p>
-    <p>@Book.Price</p>
+    <p>$@Book.Price</p>
     <a href="/books/@Book.Id">Product Page</a>
     <AddRemove BookId=Book.Id Cart=Cart Setting="add" />
     <AddRemove BookId=Book.Id Cart=Cart Setting="remove" OnCartUpdated="OnCartUpdated" />
