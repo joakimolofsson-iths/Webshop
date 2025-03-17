@@ -9,3 +9,10 @@ html {
     scrollbar-width: thin;
     scrollbar-color: #333 #999;
 }
+
+@font-face {
+    font-family: 'HorrorFont';
+    src: url('media/horror_font.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
