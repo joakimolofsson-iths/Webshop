@@ -401,3 +401,4 @@ FodyWeavers.xsd
 
 # Ignore folders in wwwroot
 Backend/wwwroot/images/book-covers
+Frontend/wwwroot/media

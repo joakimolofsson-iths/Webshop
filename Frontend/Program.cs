@@ -35,10 +35,11 @@ namespace Frontend
 
             app.UseHttpsRedirection();
 
-            app.UseAntiforgery();
+			app.UseAntiforgery();
 
-            app.MapStaticAssets();
-            app.MapRazorComponents<App>()
+			//app.MapStaticAssets();
+			app.UseStaticFiles();
+			app.MapRazorComponents<App>()
                 .AddInteractiveServerRenderMode();
 
             app.Run();
