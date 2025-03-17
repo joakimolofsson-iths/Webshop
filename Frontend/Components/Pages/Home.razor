@@ -11,7 +11,6 @@
     <h1>VHS Horror Shop</h1>
 </div>
 
-
 <Video />
 
 @if (_books == null || !_books.Any())
@@ -25,6 +24,8 @@ else
         <Product Book=book Cart=_cart />
     }
 }
+
+<Archive Books=_books />
 
 @code {
     private List<Book> _books = new();

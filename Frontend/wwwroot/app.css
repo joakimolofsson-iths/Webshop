@@ -12,21 +12,21 @@ html {
 
 @font-face {
     font-family: 'Danger';
-    src: url('media/danger.otf') format('opentype');
+    src: url('media/fonts/danger.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Monster';
-    src: url('media/monster.ttf') format('truetype');
+    src: url('media/fonts/monster.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Nightcore';
-    src: url('media/nightcore.ttf') format('truetype');
+    src: url('media/fonts/nightcore.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
