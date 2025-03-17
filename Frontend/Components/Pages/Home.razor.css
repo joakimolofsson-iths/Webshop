@@ -1,0 +1,20 @@
+﻿.titleContainer {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(ellipse, black, transparent);
+}
+
+    .titleContainer h1 {
+        font-family: "Nightcore", serif;
+        font-size: 10rem;
+        color: red;
+    }

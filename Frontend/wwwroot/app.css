@@ -11,8 +11,22 @@ html {
 }
 
 @font-face {
-    font-family: 'HorrorFont';
-    src: url('media/horror_font.otf') format('opentype');
+    font-family: 'Danger';
+    src: url('media/danger.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Monster';
+    src: url('media/monster.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nightcore';
+    src: url('media/nightcore.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
