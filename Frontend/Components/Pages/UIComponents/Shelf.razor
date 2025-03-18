@@ -1,0 +1,49 @@
+﻿@using Models
+
+<div class="shelfContainer">
+    @foreach(var book in Books)
+    {
+        <div class="vhsContainer" @onclick="() => ToggleSideView(book)">
+            <div class="frontView">
+                <p>@book.Name</p>
+                <img src="@GetRandomVhsImage()" alt="VHS tape" />
+            </div>
+
+            @if (book == SelectedBook)
+            {
+                <div class="sideView">
+                    <img src="@book.ImageUrl" alt="VHS tape" />
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter] public required List<Book> Books { get; set; }
+
+    private readonly Random _random = new();
+    private readonly string[] vhsImages =
+    {
+        "media/images/vhs_1.jpg",
+        "media/images/vhs_2.jpg",
+        "media/images/vhs_3.jpg"
+    };
+
+    private Book? SelectedBook = null; // Holds the currently selected book
+
+    private string GetRandomVhsImage() => vhsImages[_random.Next(vhsImages.Length)];
+
+    private void ToggleSideView(Book book)
+    {
+        // If the clicked book is the same as the currently selected one, hide it, otherwise show it
+        if (SelectedBook == book)
+        {
+            SelectedBook = null; // Hide the side view if clicked again
+        }
+        else
+        {
+            SelectedBook = book; // Show the side view for the clicked book
+        }
+    }
+}
