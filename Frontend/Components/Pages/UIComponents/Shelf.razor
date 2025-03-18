@@ -3,18 +3,16 @@
 <div class="shelfContainer">
     @foreach(var book in Books)
     {
-        <div class="vhsContainer" @onclick="() => ToggleSideView(book)">
-            <div class="frontView">
+        <div class="vhsContainer @(book == SelectedBook ? "expanded" : "" )" @onclick="() => ToggleExpanded(book)" >
+            <div class="vhsFront">
                 <p>@book.Name</p>
-                <img src="@GetRandomVhsImage()" alt="VHS tape" />
+                <img src="@vhsFrontImageMap[book]" alt="VHS Tape" />
             </div>
-
-            @if (book == SelectedBook)
-            {
-                <div class="sideView">
-                    <img src="@book.ImageUrl" alt="VHS tape" />
-                </div>
-            }
+            <div class="vhsSide">
+                <button @onclick="() => DoSomething()" @onclick:stopPropagation="true" @onclick:preventDefault="true">Add to Cart</button>
+                <a href="/books/@book.Id">Product Page</a>
+                <img src="@book.ImageUrl" alt="VHS Cover" />
+            </div>
         </div>
     }
 </div>
@@ -23,27 +21,33 @@
     [Parameter] public required List<Book> Books { get; set; }
 
     private readonly Random _random = new();
-    private readonly string[] vhsImages =
+    private readonly string[] vhsFrontImages =
     {
         "media/images/vhs_1.jpg",
         "media/images/vhs_2.jpg",
         "media/images/vhs_3.jpg"
     };
+    private Book? SelectedBook = null;
+    private Dictionary<Book, string> vhsFrontImageMap = new();
 
-    private Book? SelectedBook = null; // Holds the currently selected book
-
-    private string GetRandomVhsImage() => vhsImages[_random.Next(vhsImages.Length)];
-
-    private void ToggleSideView(Book book)
+    protected override void OnParametersSet()
     {
-        // If the clicked book is the same as the currently selected one, hide it, otherwise show it
-        if (SelectedBook == book)
+        foreach (var book in Books)
         {
-            SelectedBook = null; // Hide the side view if clicked again
+            if (!vhsFrontImageMap.ContainsKey(book))
+            {
+                vhsFrontImageMap[book] = vhsFrontImages[_random.Next(vhsFrontImages.Length)];
+            }
         }
-        else
-        {
-            SelectedBook = book; // Show the side view for the clicked book
-        }
+    }
+
+    private void ToggleExpanded(Book book)
+    {
+        SelectedBook = (SelectedBook == book) ? null : book;
+    }
+
+    private void DoSomething()
+    {
+        
     }
 }

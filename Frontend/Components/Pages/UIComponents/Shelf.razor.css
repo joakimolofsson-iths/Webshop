@@ -4,51 +4,68 @@
     background-color: orange;
     display: flex;
     flex-direction: row;
-    align-items: end;
+    align-items: flex-end;
     overflow-x: auto;
     overflow-y: hidden;
 }
 
 .shelfContainer .vhsContainer {
     position: relative;
-    width: 6rem;
-    height: 80%;
-    margin: 0 1px 2px 1px;
+    width: 100px;
+    height: 70%;
+    background-color: red;
+    margin: 0 2px;
     flex-shrink: 0;
-    background: red;
     display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: width 0.3s ease-in-out;
+    cursor: pointer;
+    border-radius: 10px;
 }
 
-.shelfContainer .vhsContainer .frontView {
-    position: relative;
-    width: 6rem;
+.shelfContainer .vhsContainer .vhsFront {
+    width: 100px;
     height: 100%;
+    background-color: green;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.shelfContainer .vhsContainer .frontView p {
-    writing-mode: vertical-rl;
+.shelfContainer .vhsContainer .vhsFront p {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 1.5rem;
+    writing-mode: vertical-lr;
+    font-size: 3rem;
 }
 
-.shelfContainer .vhsContainer .frontView img {
-    height: 100%;
+.shelfContainer .vhsContainer .vhsFront img {
     width: 100%;
+    height: 100%;
+    object-fit: fill;
+    object-position: center;
 }
 
-.shelfContainer .vhsContainer .sideView {
+.shelfContainer .vhsContainer .vhsSide {
+    position: absolute;
+    top: 0;
+    right: -300px;
     width: 300px;
     height: 100%;
-    top: 0;
-    left: 6rem;
-    transition: all 1s;
+    background-color: Wheat;
+    transition: right 0.3s ease-in-out;
+    z-index: 1;
 }
 
-.shelfContainer .vhsContainer .sideView img {
+.shelfContainer .vhsContainer .vhsSide img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+}
+
+.vhsContainer.expanded {
+    width: 400px;
+}
+.vhsContainer.expanded .vhsSide {
+    right: 0;
 }
