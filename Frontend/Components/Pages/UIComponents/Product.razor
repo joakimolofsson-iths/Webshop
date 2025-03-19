@@ -2,17 +2,17 @@
 @using Frontend.Components.Pages.UIComponents
 
 <div class="productContainer">
-    <img src="@Book.ImageUrl" width="200" />
-    <p>@Book.Name</p>
-    <p>@Book.Author</p>
-    <p>$@Book.Price</p>
-    <a href="/books/@Book.Id">Product Page</a>
-    <AddRemove BookId=Book.Id Cart=Cart Setting="add" />
-    <AddRemove BookId=Book.Id Cart=Cart Setting="remove" OnCartUpdated="OnCartUpdated" />
+    <img src="@Movie.ImageUrl" width="200" />
+    <p>@Movie.Title</p>
+    <p>@Movie.Director</p>
+    <p>$@Movie.Price</p>
+    <a href="/movies/@Movie.Id">Product Page</a>
+    <AddRemove MovieId=Movie.Id Cart=Cart Setting="add" />
+    <AddRemove MovieId=Movie.Id Cart=Cart Setting="remove" OnCartUpdated="OnCartUpdated" />
 </div>
 
 @code {
-    [Parameter] public required Book Book { get; set; }
+    [Parameter] public required Movie Movie { get; set; }
     [Parameter] public required List<int> Cart { get; set; }
     [Parameter] public EventCallback<List<int>> OnCartUpdated { get; set; }
 }

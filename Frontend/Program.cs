@@ -19,7 +19,7 @@ namespace Frontend
 				client.BaseAddress = new Uri("https://localhost:7206/");
 			});
 
-			builder.Services.AddScoped<BookService>();
+			builder.Services.AddScoped<MoviesService>();
 
 			builder.Services.AddBlazoredLocalStorage();
 

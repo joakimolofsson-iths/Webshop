@@ -1,14 +1,14 @@
 ﻿@page "/cart"
 @using Models
 @using Frontend.Components.Pages.UIComponents
-@inject Frontend.Services.BookService bookService
+@inject Frontend.Services.MoviesService moviesService
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
 @inject NavigationManager Navigation
 @rendermode InteractiveServer
 
 <h3>Cart</h3>
 
-@if (_books == null || !_books.Any())
+@if (_movies == null || !_movies.Any())
 {
     <p><em>Loading...</em></p>
 }
@@ -16,13 +16,13 @@ else
 {
     _totalPrice = 0;
 
-    @foreach (var bookId in _cart)
+    @foreach (var movieId in _cart)
     {
-        var book = _books.FirstOrDefault(b => b.Id == bookId);
-        if (book != null)
+        var movie = _movies.FirstOrDefault(b => b.Id == movieId);
+        if (movie != null)
         {
-            <Product Book="book" Cart="_cart" OnCartUpdated="UpdateCart" />
-            _totalPrice += book.Price;
+            <Product Movie="movie" Cart="_cart" OnCartUpdated="UpdateCart" />
+            _totalPrice += movie.Price;
         }
     }
 }
@@ -80,14 +80,14 @@ else
 </EditForm>
 
 @code {
-    private List<Book> _books = new();
+    private List<Movie> _movies = new();
     private List<int> _cart = new();
     private double _totalPrice;
     private Checkout _checkout = new Checkout();
 
     protected override async Task OnInitializedAsync()
     {
-        _books = await bookService.GetBooksAsync() ?? new List<Book>();
+        _movies = await moviesService.GetMoviesAsync() ?? new List<Movie>();
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)

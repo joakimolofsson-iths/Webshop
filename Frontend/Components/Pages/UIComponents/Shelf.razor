@@ -1,24 +1,24 @@
 ﻿@using Models
 
 <div class="shelfContainer">
-    @foreach(var book in Books)
+    @foreach(var movie in Movies)
     {
-        <div class="vhsContainer @(book == SelectedBook ? "expanded" : "" )" @onclick="() => ToggleExpanded(book)" >
+        <div class="vhsContainer @(movie == SelectedMovie ? "expanded" : "" )" @onclick="() => ToggleExpanded(movie)">
             <div class="vhsFront">
-                <p>@book.Name</p>
-                <img src="@vhsFrontImageMap[book]" alt="VHS Tape" />
+                <p>@movie.Title</p>
+                <img src="@vhsFrontImageMap[movie]" alt="VHS Tape" />
             </div>
             <div class="vhsSide">
                 <button @onclick="() => DoSomething()" @onclick:stopPropagation="true" @onclick:preventDefault="true">Add to Cart</button>
-                <a href="/books/@book.Id">Product Page</a>
-                <img src="@book.ImageUrl" alt="VHS Cover" />
+                <a href="/movies/@movie.Id">Product Page</a>
+                <img src="@movie.ImageUrl" alt="Movie Cover" />
             </div>
         </div>
     }
 </div>
 
 @code {
-    [Parameter] public required List<Book> Books { get; set; }
+    [Parameter] public required List<Movie> Movies { get; set; }
 
     private readonly Random _random = new();
     private readonly string[] vhsFrontImages =
@@ -27,23 +27,23 @@
         "media/images/vhs_2.jpg",
         "media/images/vhs_3.jpg"
     };
-    private Book? SelectedBook = null;
-    private Dictionary<Book, string> vhsFrontImageMap = new();
+    private Movie? SelectedMovie = null;
+    private Dictionary<Movie, string> vhsFrontImageMap = new();
 
     protected override void OnParametersSet()
     {
-        foreach (var book in Books)
+        foreach (var movie in Movies)
         {
-            if (!vhsFrontImageMap.ContainsKey(book))
+            if (!vhsFrontImageMap.ContainsKey(movie))
             {
-                vhsFrontImageMap[book] = vhsFrontImages[_random.Next(vhsFrontImages.Length)];
+                vhsFrontImageMap[movie] = vhsFrontImages[_random.Next(vhsFrontImages.Length)];
             }
         }
     }
 
-    private void ToggleExpanded(Book book)
+    private void ToggleExpanded(Movie movie)
     {
-        SelectedBook = (SelectedBook == book) ? null : book;
+        SelectedMovie = (SelectedMovie == movie) ? null : movie;
     }
 
     private void DoSomething()

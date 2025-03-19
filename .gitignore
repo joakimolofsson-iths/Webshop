@@ -400,5 +400,5 @@ FodyWeavers.xsd
 *.sln.iml
 
 # Ignore folders in wwwroot
-Backend/wwwroot/images/book-covers
+Backend/wwwroot/media
 Frontend/wwwroot/media

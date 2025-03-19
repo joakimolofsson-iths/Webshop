@@ -1,42 +1,43 @@
-﻿@page "/books/{id:int}"
+﻿@page "/movies/{id:int}"
 @using Models
 @using Frontend.Components.Pages.UIComponents
-@inject Frontend.Services.BookService bookService
+@inject Frontend.Services.MoviesService moviesService
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
 @rendermode InteractiveServer
 
-<h3>HorrorBookDetails</h3>
+<h3>MovieDetails</h3>
 
-@if (_book == null)
+@if (_movie == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
     <div>
-        <img src="@_book.ImageUrl" width="400" />
-        <p>Name: @_book.Name</p>
-        <p>Author: @_book.Author</p>
-        <p>Description: @_book.Description</p>
-        <p>Release Year: @_book.ReleaseYear</p>
-        <p>Pages: @_book.Pages</p>
-        <p>Rating: @_book.Rating</p>
-        <p>Award: @_book.Award</p>
-        <p>Price: $@_book.Price</p>
-        <AddRemove BookId=_book.Id Cart=_cart Setting="add" />
-        <AddRemove BookId=_book.Id Cart=_cart Setting="remove" />
+        <img src="@_movie.ImageUrl" width="400" />
+        <p>Title: @_movie.Title</p>
+        <p>Director: @_movie.Director</p>
+        <p>Writers: @_movie.Writers</p>
+        <p>Actors: @_movie.Actors</p>
+        <p>Description: @_movie.Description</p>
+        <p>Release Year: @_movie.ReleaseYear</p>
+        <p>Length: @_movie.Length</p>
+        <p>Rating: @_movie.Rating</p>
+        <p>Price: $@_movie.Price</p>
+        <AddRemove MovieId=_movie.Id Cart=_cart Setting="add" />
+        <AddRemove MovieId=_movie.Id Cart=_cart Setting="remove" />
     </div>
 }
 
 @code {
     [Parameter] public int id { get; set; }
 
-    private Book? _book;
+    private Movie? _movie;
     private List<int> _cart = new();
 
     protected override async Task OnInitializedAsync()
     {
-        _book = await bookService.GetBookAsync(id);
+        _movie = await moviesService.GetMovieAsync(id);
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)

@@ -1,39 +1,39 @@
 ﻿@page "/"
 @using Models
 @using Frontend.Components.Pages.UIComponents
-@inject Frontend.Services.BookService bookService
+@inject Frontend.Services.MoviesService moviesService
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
 @rendermode InteractiveServer
 
 <PageTitle>Home</PageTitle>
 
 <div class="titleContainer">
-    <h1>VHS Horror Shop</h1>
+    <h1>Horror Movies</h1>
 </div>
 
 <Video />
 
-@if (_books == null || !_books.Any())
+@if (_movies == null || !_movies.Any())
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-    @foreach (var book in _books)
+    @foreach (var movie in _movies)
     {
-        <Product Book=book Cart=_cart />
+        <Product Movie=movie Cart=_cart />
     }
 }
 
-<Shelf Books=_books />
+<Shelf Movies=_movies />
 
 @code {
-    private List<Book> _books = new();
+    private List<Movie> _movies = new();
     private List<int> _cart = new();
 
     protected override async Task OnInitializedAsync()
     {
-        _books = await bookService.GetBooksAsync() ?? new List<Book>();
+        _movies = await moviesService.GetMoviesAsync() ?? new List<Movie>();
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)

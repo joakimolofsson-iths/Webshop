@@ -7,7 +7,7 @@
 <p>@_status</p>
 
 @code {
-	[Parameter] public int BookId { get; set; }
+	[Parameter] public int MovieId { get; set; }
 	[Parameter] public required List<int> Cart { get; set; }
 	[Parameter] public required string Setting { get; set; }
 	[Parameter] public EventCallback<List<int>> OnCartUpdated { get; set; }
@@ -18,27 +18,27 @@
 	{
 		if (Setting == "add")
 		{
-			if (Cart.Contains(BookId))
+			if (Cart.Contains(MovieId))
 			{
-				UpdateStatus("Book already in cart!");
+				UpdateStatus("Movie already in cart!");
 				return;
 			};
 
-			Cart.Add(BookId);
+			Cart.Add(MovieId);
 			await localStorage.SetItemAsync("cart", Cart);
-			UpdateStatus("Book added to cart!");
+			UpdateStatus("Movie added to cart!");
 		}
 		else if (Setting == "remove")
 		{
-			if (!Cart.Contains(BookId))
+			if (!Cart.Contains(MovieId))
 			{
-				UpdateStatus("Book is not in cart!");
+				UpdateStatus("Movie is not in cart!");
 				return;
 			};
 
-			Cart.Remove(BookId);
+			Cart.Remove(MovieId);
 			await localStorage.SetItemAsync("cart", Cart);
-			UpdateStatus("Book removed from cart!");
+			UpdateStatus("Movie removed from cart!");
 
 			await OnCartUpdated.InvokeAsync(Cart);
 		};
