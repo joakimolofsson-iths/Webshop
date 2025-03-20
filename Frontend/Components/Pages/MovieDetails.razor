@@ -5,28 +5,33 @@
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
 @rendermode InteractiveServer
 
-<h3>MovieDetails</h3>
-
 @if (_movie == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-    <div>
-        <img src="@_movie.ImageUrl" width="400" />
-        <p>Title: @_movie.Title</p>
-        <p>Director: @_movie.Director</p>
-        <p>Writers: @_movie.Writers</p>
-        <p>Actors: @_movie.Actors</p>
-        <p>Description: @_movie.Description</p>
-        <p>Release Year: @_movie.ReleaseYear</p>
-        <p>Length: @_movie.Length</p>
-        <p>Rating: @_movie.Rating</p>
-        <p>Price: $@_movie.Price</p>
-        <AddRemove MovieId=_movie.Id Cart=_cart Setting="add" />
-        <AddRemove MovieId=_movie.Id Cart=_cart Setting="remove" />
-    </div>
+    <div class="movieDetailsContainer">
+
+        <div class="movieImage">
+            <img src="@_movie.ImageUrl" />
+        </div>
+
+        <div class="movieDetails">
+            <h1>@_movie.Title</h1>
+            <p>Director: @_movie.Director</p>
+            <p>Writers: @string.Join(", ", _movie.Writers)</p>
+            <p>Actors: @string.Join(", ", _movie.Actors)</p>
+            <p>Description: @_movie.Description</p>
+            <p>Release Year: @_movie.ReleaseYear</p>
+            <p>Length: @_movie.Length</p>
+            <p>Rating: @_movie.Rating</p>
+            <p>Price: $@_movie.Price</p>
+            <AddRemove MovieId=_movie.Id Cart=_cart Setting="add" />
+            <AddRemove MovieId=_movie.Id Cart=_cart Setting="remove" />
+        </div>
+
+    </div>    
 }
 
 @code {
