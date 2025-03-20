@@ -4,24 +4,16 @@ nav {
     left: 0;
     z-index: 10;
     width: 100%;
-    background: linear-gradient(to bottom, black, transparent);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
 }
 
-nav ::deep a {
-    color: red;
-    text-decoration: none;
-    font-size: 1.5rem;
-    font-family: 'HorrorFont', serif;
-    display: flex;
-}
-
-nav ::deep a .cartIcon {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+nav ::deep a .icon {
+    width: 40px;
+    height: 40px;
     padding: 5px;
+    border-radius: 50%;
+    background-color: black;
 }
