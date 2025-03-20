@@ -10,6 +10,10 @@ html {
     scrollbar-color: #333 #999;
 }
 
+body {
+    background-color: rgb(26, 26, 26);
+}
+
 @font-face {
     font-family: 'Danger';
     src: url('media/fonts/danger.otf') format('opentype');

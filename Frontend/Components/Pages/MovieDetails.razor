@@ -19,14 +19,33 @@ else
 
         <div class="movieDetails">
             <h1>@_movie.Title</h1>
-            <p>Director: @_movie.Director</p>
-            <p>Writers: @string.Join(", ", _movie.Writers)</p>
-            <p>Actors: @string.Join(", ", _movie.Actors)</p>
-            <p>Description: @_movie.Description</p>
-            <p>Release Year: @_movie.ReleaseYear</p>
-            <p>Length: @_movie.Length</p>
-            <p>Rating: @_movie.Rating</p>
-            <p>Price: $@_movie.Price</p>
+            <br />
+
+            <p><span class="darkerColor">Director</span></p>
+            <p>@_movie.Director</p>
+            <br />
+
+            <p><span class="darkerColor">Writers</span></p>
+            <p>@string.Join(", ", _movie.Writers)</p>
+            <br />
+
+            <p><span class="darkerColor">Actors</span></p>
+            <p>@string.Join(", ", _movie.Actors)</p>
+            <br />
+
+            <p><span class="darkerColor">Story</span></p>
+            <p>@_movie.Description</p>
+            <br />
+
+
+            <p><span class="darkerColor">Release Year:</span> @_movie.ReleaseYear</p>
+            <p><span class="darkerColor">Length:</span> @_movie.Length min</p>
+            <p><span class="darkerColor">Rating:</span> <span class="ratingColor">@_movie.Rating</span></p>
+            <br />
+
+            <p class="moviePrice">$@_movie.Price</p>
+            <br />
+
             <AddRemove MovieId=_movie.Id Cart=_cart Setting="add" />
             <AddRemove MovieId=_movie.Id Cart=_cart Setting="remove" />
         </div>
