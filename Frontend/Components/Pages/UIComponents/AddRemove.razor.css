@@ -1,0 +1,20 @@
+﻿.addRemoveBtn {
+    all: unset;
+    display: block;
+    width: 100%;
+    padding: 1rem 0;
+    text-align: center;
+    background-color: grey;
+    color: white;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.addRemoveBtn.add {
+    background-color: green;
+}
+
+.addRemoveBtn.remove {
+    background-color: darkred;
+}

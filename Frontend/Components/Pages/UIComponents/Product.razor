@@ -6,8 +6,7 @@
     <p>@Movie.Title</p>
     <p>$@Movie.Price</p>
     <a href="/movies/@Movie.Id">Product Page</a>
-    <AddRemove MovieId=Movie.Id Cart=Cart Setting="add" />
-    <AddRemove MovieId=Movie.Id Cart=Cart Setting="remove" OnCartUpdated="OnCartUpdated" />
+    <AddRemove MovieId=Movie.Id Cart=Cart OnCartUpdated="OnCartUpdated" />
 </div>
 
 @code {

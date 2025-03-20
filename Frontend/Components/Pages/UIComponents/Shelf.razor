@@ -1,4 +1,5 @@
 ﻿@using Models
+@using Frontend.Components.Pages.UIComponents
 
 <div class="shelfContainer">
     @foreach(var movie in Movies)
@@ -9,6 +10,7 @@
                 <img src="@vhsFrontImageMap[movie]" alt="VHS Tape" />
             </div>
             <div class="vhsSide">
+                <AddRemove MovieId=movie.Id Cart=Cart />
                 <button @onclick="() => DoSomething()" @onclick:stopPropagation="true" @onclick:preventDefault="true">Add to Cart</button>
                 <a href="/movies/@movie.Id">Movie Details</a>
                 <img src="@movie.ImageUrl" alt="Movie Cover" />
@@ -19,6 +21,7 @@
 
 @code {
     [Parameter] public required List<Movie> Movies { get; set; }
+    [Parameter] public required List<int> Cart { get; set; }
 
     private readonly Random _random = new();
     private readonly string[] vhsFrontImages =

@@ -1,51 +1,35 @@
 ﻿@inject Blazored.LocalStorage.ILocalStorageService localStorage
 
-<button @onclick="AddOrRemove">
-	@(Setting == "add" ? "Add" : "Remove")
+<button @onclick="AddOrRemove" @onclick:stopPropagation="true" @onclick:preventDefault="true" class="addRemoveBtn @( _setting ? "add" : "remove" )">
+	@(_setting ? "Add to Cart" : "Remove from Cart")
 </button>
-
-<p>@_status</p>
 
 @code {
 	[Parameter] public int MovieId { get; set; }
 	[Parameter] public required List<int> Cart { get; set; }
-	[Parameter] public required string Setting { get; set; }
 	[Parameter] public EventCallback<List<int>> OnCartUpdated { get; set; }
 
-	private string _status = string.Empty;
+	private bool _setting = true;
+
+	protected override void OnParametersSet()
+	{
+		_setting = !Cart.Contains(MovieId);
+	}
 
 	private async Task AddOrRemove()
 	{
-		if (Setting == "add")
+		if (!Cart.Contains(MovieId))
 		{
-			if (Cart.Contains(MovieId))
-			{
-				UpdateStatus("Movie already in cart!");
-				return;
-			};
-
 			Cart.Add(MovieId);
-			await localStorage.SetItemAsync("cart", Cart);
-			UpdateStatus("Movie added to cart!");
+			_setting = false;
 		}
-		else if (Setting == "remove")
+		else
 		{
-			if (!Cart.Contains(MovieId))
-			{
-				UpdateStatus("Movie is not in cart!");
-				return;
-			};
-
 			Cart.Remove(MovieId);
-			await localStorage.SetItemAsync("cart", Cart);
-			UpdateStatus("Movie removed from cart!");
-
+			_setting = true;
 			await OnCartUpdated.InvokeAsync(Cart);
-		};
-	}
+		}
 
-	private void UpdateStatus(string statusMessage)
-	{
-		_status = statusMessage;
+		await localStorage.SetItemAsync("cart", Cart);
 	}
 }

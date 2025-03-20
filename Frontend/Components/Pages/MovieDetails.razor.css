@@ -53,6 +53,7 @@
     .movieDetailsContainer .movieImage {
         display: flex;
         align-items: center;
+        justify-content: center;
     }
 
     .movieDetailsContainer .movieDetails {
