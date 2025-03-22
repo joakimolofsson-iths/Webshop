@@ -1,11 +1,18 @@
-﻿.formContainer {
+﻿.cartItemsContainer {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formContainer {
     display: flex;
     justify-content: center;
-    margin: 1rem 0;
+    padding: 1rem;
 }
 
 .formContainer ::deep form {
-    width: 90%;
+    width: 100%;
     max-width: 350px;
 }
 

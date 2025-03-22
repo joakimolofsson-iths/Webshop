@@ -1,12 +1,15 @@
 ﻿@using Models
 @using Frontend.Components.Pages.UIComponents
 
-<div class="cartItemContainer">
+<div class="cartItem">
     <img src="@Movie.ImageUrl" width="200" />
-    <p>@Movie.Title</p>
-    <p>$@Movie.Price</p>
-    <a href="/movies/@Movie.Id">Product Page</a>
-    <AddRemove MovieId=Movie.Id Cart=Cart OnCartUpdated="OnCartUpdated" />
+
+    <div class="itemInfo">
+        <p class="title">@Movie.Title</p>
+        <a href="/movies/@Movie.Id">Product Page</a>
+        <p class="price">$@Movie.Price</p>
+        <AddRemove MovieId=Movie.Id Cart=Cart OnCartUpdated="OnCartUpdated" />
+    </div>
 </div>
 
 @code {

@@ -14,7 +14,7 @@ else
 {
     _totalPrice = 0;
 
-    <div class="itemsPriceContainer">
+    <div class="cartItemsContainer">
         @foreach (var movieId in _cart)
         {
             var movie = _movies.FirstOrDefault(b => b.Id == movieId);
