@@ -38,6 +38,7 @@
     position: absolute;
     writing-mode: vertical-lr;
     font-size: 3rem;
+    color: black;
 }
 
 .shelfContainer .vhsContainer .vhsFront img {

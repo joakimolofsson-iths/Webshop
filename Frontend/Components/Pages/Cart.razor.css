@@ -1,7 +1,6 @@
 ﻿.formContainer {
     display: flex;
     justify-content: center;
-    color: white;
     margin: 1rem 0;
 }
 
@@ -23,7 +22,6 @@
     border-bottom: 1px solid grey;
     border-radius: 2px;
     background-color: rgb(38, 38, 38);
-    color: white;
 }
 
 .formContainer ::deep form div input.modified.valid {
