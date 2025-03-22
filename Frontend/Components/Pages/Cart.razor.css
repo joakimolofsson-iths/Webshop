@@ -1,1 +1,82 @@
-﻿
+﻿.formContainer {
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin: 1rem 0;
+}
+
+.formContainer ::deep form {
+    width: 90%;
+    max-width: 350px;
+}
+
+.formContainer ::deep form div {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.formContainer ::deep form div input {
+    width: 100%;
+    padding: .5rem;
+    font-size: 1rem;
+    border: none;
+    border-bottom: 1px solid grey;
+    border-radius: 2px;
+    background-color: rgb(38, 38, 38);
+    color: white;
+}
+
+.formContainer ::deep form div input.modified.valid {
+    border-bottom-color: lime;
+}
+
+.formContainer ::deep form div input.invalid {
+    border-bottom-color: red;
+}
+
+.formContainer ::deep form div input:focus {
+    outline: none;
+    border-bottom-color: white;
+}
+
+.formContainer ::deep form div input:-webkit-autofill,
+.formContainer ::deep form div input:-webkit-autofill:hover,
+.formContainer ::deep form div input:-webkit-autofill:focus,
+.formContainer ::deep form div input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.formContainer ::deep form div input:-webkit-autofill::first-line {
+    color: white !important;
+}
+
+.formContainer ::deep form div input:focus + label,
+.formContainer ::deep form div input:not(:placeholder-shown) + label {
+    display: none;
+}
+
+.formContainer ::deep form div label {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    color: grey;
+}
+
+.formContainer ::deep form div .validation-message {
+    margin-top: 5px;
+    padding-left: 5px;
+    color: red;
+}
+
+.formContainer ::deep form button {
+    all: unset;
+    display: block;
+    width: 100%;
+    padding: 1rem 0;
+    text-align: center;
+    background-color: grey;
+    color: white;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}

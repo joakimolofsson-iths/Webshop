@@ -14,68 +14,71 @@ else
 {
     _totalPrice = 0;
 
-    @foreach (var movieId in _cart)
-    {
-        var movie = _movies.FirstOrDefault(b => b.Id == movieId);
-        if (movie != null)
+    <div class="itemsPriceContainer">
+        @foreach (var movieId in _cart)
         {
-            <Product Movie="movie" Cart="_cart" OnCartUpdated="UpdateCart" />
-            _totalPrice += movie.Price;
+            var movie = _movies.FirstOrDefault(b => b.Id == movieId);
+            if (movie != null)
+            {
+                <CartItem Movie="movie" Cart="_cart" OnCartUpdated="UpdateCart" />
+                _totalPrice += movie.Price;
+            }
         }
-    }
+
+        <p>Total Price: $@Math.Round(_totalPrice, 2)</p>
+    </div>   
 }
 
-<p>Total Price: $@Math.Round(_totalPrice, 2)</p>
+<div class="formContainer">
+    <EditForm Model="@_checkout" OnValidSubmit="HandleSubmit">
+        <DataAnnotationsValidator />
 
-<h3>CheckoutForm</h3>
+        <div>
+            <InputText id="firstName" @bind-Value="_checkout.FirstName" placeholder=" " />
+            <label for="firstName">First Name</label>
+            <ValidationMessage For="@(() => _checkout.FirstName)" />
+        </div>
 
-<EditForm Model="@_checkout" OnValidSubmit="HandleSubmit">
-    <DataAnnotationsValidator />
+        <div>
+            <InputText id="lastName" @bind-Value="_checkout.LastName" placeholder=" " />
+            <label for="lastName">Last Name</label>
+            <ValidationMessage For="@(() => _checkout.LastName)" />
+        </div>
 
-    <div>
-        <label>First Name:</label>
-        <InputText @bind-Value="_checkout.FirstName" />
-        <ValidationMessage For="@(() => _checkout.FirstName)" />
-    </div>
+        <div>
+            <InputText id="email" type="email" @bind-Value="_checkout.Email" placeholder=" " />
+            <label for="email">E-Mail</label>
+            <ValidationMessage For="@(() => _checkout.Email)" />
+        </div>
 
-    <div>
-        <label>Last Name:</label>
-        <InputText @bind-Value="_checkout.LastName" />
-        <ValidationMessage For="@(() => _checkout.LastName)" />
-    </div>
+        <div>
+            <InputText id="phone" type="tel" @bind-Value="_checkout.Phone" placeholder=" " />
+            <label for="phone">Phone Number</label>
+            <ValidationMessage For="@(() => _checkout.Phone)" />
+        </div>
 
-    <div>
-        <label>E-Mail:</label>
-        <InputText type="email" @bind-Value="_checkout.Email" />
-        <ValidationMessage For="@(() => _checkout.Email)" />
-    </div>
+        <div>
+            <InputText id="city" @bind-Value="_checkout.City" placeholder=" " />
+            <label for="city">City</label>
+            <ValidationMessage For="@(() => _checkout.City)" />
+        </div>
 
-    <div>
-        <label>Phone Number:</label>
-        <InputText type="tel" @bind-Value="_checkout.Phone" />
-        <ValidationMessage For="@(() => _checkout.Phone)" />
-    </div>
+        <div>
+            <InputText id="street" @bind-Value="_checkout.Street" placeholder=" " />
+            <label for="street">Street Address</label>
+            <ValidationMessage For="@(() => _checkout.Street)" />
+        </div>
 
-    <div>
-        <label>City:</label>
-        <InputText @bind-Value="_checkout.City" />
-        <ValidationMessage For="@(() => _checkout.City)" />
-    </div>
+        <div>
+            <InputText id="zipCode" type="tel" @bind-Value="_checkout.ZipCode" placeholder=" " />
+            <label for="zipCode">ZIP Code</label>
+            <ValidationMessage For="@(() => _checkout.ZipCode)" />
+        </div>
 
-    <div>
-        <label>Street Address:</label>
-        <InputText @bind-Value="_checkout.Street" />
-        <ValidationMessage For="@(() => _checkout.Street)" />
-    </div>
+        <button type="submit">Confirm Order</button>
+    </EditForm>
+</div>
 
-    <div>
-        <label>ZIP Code:</label>
-        <InputText type="tel" @bind-Value="_checkout.ZipCode" />
-        <ValidationMessage For="@(() => _checkout.ZipCode)" />
-    </div>
-
-    <button type="submit">Confirm Order</button>
-</EditForm>
 
 @code {
     private List<Movie> _movies = new();
@@ -106,7 +109,6 @@ else
     private async Task HandleSubmit()
     {
         await localStorage.SetItemAsync("checkoutData", _checkout);
-
         Navigation.NavigateTo("/confirmation");
     }
 }

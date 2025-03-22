@@ -11,8 +11,8 @@
     background: radial-gradient(ellipse, rgba(0, 0, 0, 0.5) 30%, transparent 70%);
 }
 
-    .titleContainer h1 {
-        font-family: "Nightcore", serif;
-        font-size: 3rem;
-        color: red;
-    }
+.titleContainer h1 {
+    font-family: "Nightcore", serif;
+    font-size: 3rem;
+    color: red;
+}
