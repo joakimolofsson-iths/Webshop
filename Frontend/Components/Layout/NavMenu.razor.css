@@ -1,19 +1,21 @@
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-}
-
 nav ::deep a .icon {
     width: 40px;
     height: 40px;
     padding: 5px;
     border-radius: 50%;
     background-color: black;
+}
+
+nav .navItem {
+    position: fixed;
+    top: 10px;
+    z-index: 10;
+}
+
+nav .navItem:first-child {
+    left: 10px;
+}
+
+nav .navItem:last-child {
+    right: 10px;
 }
