@@ -7,25 +7,16 @@
 
 <PageTitle>Horror Movies</PageTitle>
 
-<div class="titleContainer">
-    <h1>Horror Movies</h1>
-</div>
-
-<Video />
-
 @if (_movies == null || !_movies.Any())
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-    @foreach (var movie in _movies)
-    {
-        <CartItem Movie=movie Cart=_cart />
-    }
-}
+    <Video />
 
-<Shelf Movies=_movies Cart=_cart />
+    <Shelf Movies=_movies Cart=_cart />
+}
 
 @code {
     private List<Movie> _movies = new();

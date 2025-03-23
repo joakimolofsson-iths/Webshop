@@ -2,7 +2,9 @@
 @using Frontend.Components.Pages.UIComponents
 
 <div class="cartItem">
-    <img src="@Movie.ImageUrl" width="200" />
+    <a href="/movies/@Movie.Id">
+        <img src="@Movie.ImageUrl" width="200" />
+    </a>    
 
     <div class="itemInfo">
         <p class="title">@Movie.Title</p>

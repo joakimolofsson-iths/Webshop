@@ -5,8 +5,12 @@
     gap: 10px;
 }
 
-.cartItem img {
+.cartItem a {
     width: 50%;
+}
+
+.cartItem a img {
+    width: 100%;
 }
 
 .cartItem .itemInfo {
