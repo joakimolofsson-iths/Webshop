@@ -22,7 +22,7 @@
 }
 
 .movieDetailsContainer .movieDetails h1 {
-    font-family: Monster, monospace, sans-serif;
+    font-family: "Monster", monospace, sans-serif;
     font-size: 3rem;
     color: red;
     word-break: break-word;

@@ -26,13 +26,12 @@
                     _totalPrice += movie.Price;
                 }
             }
-
-            
         </div>
 
         <p class="totalPrice"><span>Total Price:</span> $@Math.Round(_totalPrice, 2)</p>
     }
 
+    @* Skapa en komponent för form *@
     <EditForm Model="@_checkout" OnValidSubmit="HandleSubmit">
         <DataAnnotationsValidator />
 

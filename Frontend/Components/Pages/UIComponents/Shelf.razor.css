@@ -1,7 +1,47 @@
 ﻿.shelfContainer {
+    position: relative;
     width: 100%;
     height: 100vh;
-    background-color: orange;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: url(media/images/shelf.jpg);
+    background-size: contain;
+    background-repeat: repeat;
+    overflow-x: hidden;
+}
+
+.shelfContainer h2 {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-family: "Danger", sans-serif;
+    text-align: center;
+    color: red;
+}
+
+.shelfContainer .shadowEffect {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: radial-gradient(circle, transparent 0%, rgba(0, 0, 0, 0.25) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.shelfContainer .scrollableShelf {
+    position: relative;
+    width: 100%;
+    height: 80%;
+    padding: 20px 0;
+    position: relative;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
@@ -9,11 +49,10 @@
     overflow-y: hidden;
 }
 
-.shelfContainer .vhsContainer {
+.shelfContainer .scrollableShelf .vhsContainer {
     position: relative;
-    width: 100px;
-    height: 70%;
-    background-color: red;
+    width: 80px;
+    height: 100%;
     margin: 0 2px;
     flex-shrink: 0;
     display: flex;
@@ -21,52 +60,119 @@
     overflow: hidden;
     transition: width 0.3s ease-in-out;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 5px 10px 10px rgba(0,0,0,0.5);
+}
+.shelfContainer .scrollableShelf .vhsContainer.expanded {
+    width: 280px;
 }
 
-.shelfContainer .vhsContainer .vhsFront {
-    width: 100px;
+.shelfContainer .scrollableShelf .vhsContainer .vhsFront {
+    width: 80px;
     height: 100%;
-    background-color: green;
-
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.shelfContainer .vhsContainer .vhsFront p {
+.shelfContainer .scrollableShelf .vhsContainer .vhsFront p {
     position: absolute;
     writing-mode: vertical-lr;
-    font-size: 3rem;
+    text-align: center;
+    font-size: 1.5rem;
     color: black;
 }
 
-.shelfContainer .vhsContainer .vhsFront img {
+.shelfContainer .scrollableShelf .vhsContainer .vhsFront img {
     width: 100%;
     height: 100%;
     object-fit: fill;
     object-position: center;
 }
 
-.shelfContainer .vhsContainer .vhsSide {
+.shelfContainer .scrollableShelf .vhsContainer .vhsSide {
     position: absolute;
     top: 0;
-    right: -300px;
-    width: 300px;
+    right: -200px;
+    width: 200px;
     height: 100%;
-    background-color: Wheat;
     transition: right 0.3s ease-in-out;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+}
+.shelfContainer .scrollableShelf .vhsContainer.expanded .vhsSide {
+    right: 0;
 }
 
-.shelfContainer .vhsContainer .vhsSide img {
-    width: 100%;
+.shelfContainer .scrollableShelf .vhsContainer .vhsSide .price {
+    position: absolute;
+    top: 0px;
+    right: -10px;
+    transform: rotate(30deg);
+    font-family: fantasy, monospace, sans-serif;
+    font-size: 2rem;
+    color: red;
+    background-color: gold;
+    padding: 0.3rem;
+    box-shadow: 0px 3px 10px -5px black;
+}
+
+.shelfContainer .scrollableShelf .vhsContainer .vhsSide a {
     height: 100%;
 }
 
-.vhsContainer.expanded {
-    width: 400px;
+.shelfContainer .scrollableShelf .vhsContainer .vhsSide a img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
 }
-.vhsContainer.expanded .vhsSide {
-    right: 0;
+
+.shelfContainer .scrollableShelf .vhsContainer .vhsSide ::deep .addRemoveBtn {
+    border-radius: 0;
+}
+
+
+
+@media (min-width: 500px) {
+    .shelfContainer h2 {
+        font-size: 2.5rem;
+    }
+
+    .shelfContainer .scrollableShelf .vhsContainer.expanded {
+        width: 330px;
+    }
+
+    .shelfContainer .scrollableShelf .vhsContainer .vhsSide {
+        right: -250px;
+        width: 250px;
+    }
+}
+
+
+
+@media (min-width: 900px) {
+    .shelfContainer h2 {
+        font-size: 3rem;
+    }
+
+    .shelfContainer .scrollableShelf .vhsContainer {
+        width: 110px;
+    }
+    .shelfContainer .scrollableShelf .vhsContainer.expanded {
+        width: 500px;
+    }
+
+    .shelfContainer .scrollableShelf .vhsContainer .vhsFront {
+        width: 110px;
+    }
+
+    .shelfContainer .scrollableShelf .vhsContainer .vhsFront p {
+        font-size: 2rem;
+    }
+
+    .shelfContainer .scrollableShelf .vhsContainer .vhsSide {
+        right: -390px;
+        width: 390px;
+    }
 }
