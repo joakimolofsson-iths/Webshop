@@ -6,31 +6,33 @@
 @inject NavigationManager Navigation
 @rendermode InteractiveServer
 
-@if (_movies == null || !_movies.Any())
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    _totalPrice = 0;
+<div class="cartContainer">
 
-    <div class="cartItemsContainer">
-        @foreach (var movieId in _cart)
-        {
-            var movie = _movies.FirstOrDefault(b => b.Id == movieId);
-            if (movie != null)
+    @if (_movies == null || !_movies.Any())
+    {
+        <p><em>Loading...</em></p>
+    }
+    else
+    {
+        _totalPrice = 0;
+
+        <div class="cartItems">
+            @foreach (var movieId in _cart)
             {
-                <CartItem Movie="movie" Cart="_cart" OnCartUpdated="UpdateCart" />
-                _totalPrice += movie.Price;
+                var movie = _movies.FirstOrDefault(b => b.Id == movieId);
+                if (movie != null)
+                {
+                    <CartItem Movie="movie" Cart="_cart" OnCartUpdated="UpdateCart" />
+                    _totalPrice += movie.Price;
+                }
             }
-        }
 
-        <p>Total Price: $@Math.Round(_totalPrice, 2)</p>
-    </div>   
-}
+            
+        </div>
 
-@* Gör detta till en komponent *@
-<div class="formContainer">
+        <p class="totalPrice"><span>Total Price:</span> $@Math.Round(_totalPrice, 2)</p>
+    }
+
     <EditForm Model="@_checkout" OnValidSubmit="HandleSubmit">
         <DataAnnotationsValidator />
 
@@ -78,8 +80,8 @@ else
 
         <button type="submit">Confirm Order</button>
     </EditForm>
-</div>
 
+</div>
 
 @code {
     private List<Movie> _movies = new();

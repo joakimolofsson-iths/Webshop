@@ -1,7 +1,8 @@
 ﻿.cartItem {
-    max-width: 500px;
+    max-width: 350px;
     display: flex;
     flex-direction: row;
+    gap: 10px;
 }
 
 .cartItem img {
@@ -9,8 +10,10 @@
 }
 
 .cartItem .itemInfo {
+    display: flex;
+    flex-direction: column;
     width: 50%;
-    padding-left: 15px;
+    padding: 10px 0;
 }
 
 .cartItem .itemInfo .title {
@@ -20,11 +23,16 @@
     word-break: break-word;
 }
 
-.cartItem .itemInfo .price {
-    font-family: fantasy, monospace, sans-serif;
-    color: red;
+.cartItem .itemInfo .actors {
+    color: grey;
 }
 
-.cartItem .itemInfo a {
-    display: block;
+.cartItem .itemInfo .price {
+    margin-top: 10px;
+    font-family: fantasy, monospace, sans-serif;
+    font-size: 1.1rem;
+}
+
+.cartItem .itemInfo ::deep .addRemoveBtn {
+    margin-top: auto;
 }

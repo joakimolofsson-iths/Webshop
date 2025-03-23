@@ -6,7 +6,7 @@
 
     <div class="itemInfo">
         <p class="title">@Movie.Title</p>
-        <a href="/movies/@Movie.Id">Product Page</a>
+        <p class="actors">@string.Join(", ", @Movie.Actors)</p>
         <p class="price">$@Movie.Price</p>
         <AddRemove MovieId=Movie.Id Cart=Cart OnCartUpdated="OnCartUpdated" />
     </div>

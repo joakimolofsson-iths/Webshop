@@ -1,7 +1,7 @@
 ﻿@inject Blazored.LocalStorage.ILocalStorageService localStorage
 
 <button @onclick="AddOrRemove" @onclick:stopPropagation="true" @onclick:preventDefault="true" class="addRemoveBtn @( _setting ? "add" : "remove" )">
-	@(_setting ? "Add to Cart" : "Remove from Cart")
+	@(_setting ? "Add" : "Remove")
 </button>
 
 @code {
