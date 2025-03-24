@@ -11,9 +11,15 @@
 }
 
 .addRemoveBtn.add {
-    background-color: green;
+    background-color: #008000;
+}
+.addRemoveBtn.add:hover {
+    background-color: #00b300;
 }
 
 .addRemoveBtn.remove {
-    background-color: darkred;
+    background-color: #990000;
+}
+.addRemoveBtn.remove:hover {
+    background-color: #cc0000;
 }

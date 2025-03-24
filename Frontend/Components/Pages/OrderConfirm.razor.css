@@ -1,0 +1,56 @@
+﻿.orderContainer {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    word-break: break-word;
+}
+
+.orderContainer h1 {
+    text-align: center;
+    margin: 1rem;
+    font-family: "Nightcore", sans-serif;
+    color: red;
+}
+
+.orderContainer section {
+    width: 75%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.orderContainer .cartItems {
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.orderContainer .cartItems div {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+}
+
+.orderContainer .cartItems div p {
+    word-break: keep-all;
+}
+
+.orderContainer section .totalPrice {
+    display: inline-block;
+    margin: 1rem;
+    text-align: center;
+    border-bottom: 1px solid lime;
+}
+.orderContainer section .totalPrice span {
+    color: grey;
+}
+
+.userInfo p {
+    text-align: end;
+}
+
+.userInfo span {
+    float: left;
+    color: grey;
+}

@@ -111,6 +111,6 @@
     private async Task HandleSubmit()
     {
         await localStorage.SetItemAsync("checkoutData", _checkout);
-        Navigation.NavigateTo("/confirmation");
+        Navigation.NavigateTo("/orderconfirm");
     }
 }

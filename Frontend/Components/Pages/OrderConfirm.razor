@@ -1,0 +1,92 @@
+﻿@page "/orderconfirm"
+@using Models
+@inject Frontend.Services.MoviesService moviesService
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+@rendermode InteractiveServer
+
+<div class="orderContainer">
+    <h1>Order Confirmation</h1>
+
+    @if (_movies == null || !_movies.Any())
+    {
+        <p><em>Loading...</em></p>
+    }
+    else
+    {
+        _totalPrice = 0;
+
+        <section class="cartItems">
+            @foreach (var movieId in _cart)
+            {
+                var movie = _movies.FirstOrDefault(b => b.Id == movieId);
+                if (movie != null)
+                {
+                    <div>
+                        <p>@movie.Title</p>
+                        <p>@movie.Price</p>
+                    </div>
+                    _totalPrice += movie.Price;
+                }
+            }
+        </section>
+
+        <section>
+            <p class="totalPrice"><span>Total Price:</span> $@Math.Round(_totalPrice, 2)</p>
+        </section>
+
+        <section class="userInfo">
+            <p><span>First Name:</span> @firstName</p>
+            <p><span>Last Name:</span> @lastName</p>
+            <p><span>Email:</span> @email</p>
+            <p><span>Phone Number:</span> @phone</p>
+            <p><span>City:</span> @city</p>
+            <p><span>Street Address:</span> @street</p>
+            <p><span>ZIP Code:</span> @zipCode</p>
+        </section>
+    }
+
+</div>
+
+@code {
+    private List<Movie> _movies = new();
+    private List<int> _cart = new();
+    private double _totalPrice;
+
+    private string? firstName;
+    private string? lastName;
+    private string? email;
+    private string? phone;
+    private string? city;
+    private string? street;
+    private string? zipCode;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _movies = await moviesService.GetMoviesAsync() ?? new List<Movie>();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _cart = await localStorage.GetItemAsync<List<int>>("cart") ?? new List<int>();
+            var checkoutData = await localStorage.GetItemAsync<Checkout>("checkoutData");
+
+            if (checkoutData != null)
+            {
+                firstName = checkoutData.FirstName;
+                lastName = checkoutData.LastName;
+                email = checkoutData.Email;
+                phone = checkoutData.Phone;
+                city = checkoutData.City;
+                street = checkoutData.Street;
+                zipCode = checkoutData.ZipCode;
+
+                StateHasChanged();
+            }
+
+            await localStorage.RemoveItemAsync("cart");
+            await localStorage.RemoveItemAsync("checkoutData");
+        }
+    }
+}

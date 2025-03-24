@@ -92,12 +92,17 @@
     width: 100%;
     padding: 1rem 0;
     text-align: center;
-    background-color: green;
+    background-color: #008000;
     color: white;
     border-radius: 10px;
     font-weight: bold;
     cursor: pointer;
 }
+.cartContainer ::deep form button:hover {
+    background-color: #00b300;
+}
+
+
 
 @media (min-width: 750px) {
     .cartContainer .cartItems {
