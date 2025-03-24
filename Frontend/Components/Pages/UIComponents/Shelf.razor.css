@@ -74,6 +74,9 @@
     justify-content: center;
     align-items: center;
 }
+.shelfContainer .scrollableShelf .vhsContainer .vhsFront:hover {
+    border: 2px solid white;
+}
 
 .shelfContainer .scrollableShelf .vhsContainer .vhsFront p {
     position: absolute;
