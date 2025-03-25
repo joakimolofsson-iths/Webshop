@@ -5,9 +5,11 @@
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
 @rendermode InteractiveServer
 
+<PageTitle>Movie Details</PageTitle>
+
 @if (_movie == null)
 {
-    <p><em>Loading...</em></p>
+    <Loading />
 }
 else
 {

@@ -1,15 +1,18 @@
 ﻿@page "/orderconfirm"
 @using Models
+@using Frontend.Components.Pages.UIComponents
 @inject Frontend.Services.MoviesService moviesService
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
 @rendermode InteractiveServer
+
+<PageTitle>Order Confirmation</PageTitle>
 
 <div class="orderContainer">
     <h1>Order Confirmation</h1>
 
     @if (_movies == null || !_movies.Any())
     {
-        <p><em>Loading...</em></p>
+        <Loading />
     }
     else
     {

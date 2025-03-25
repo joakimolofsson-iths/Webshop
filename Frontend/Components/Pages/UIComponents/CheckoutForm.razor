@@ -1,0 +1,61 @@
+﻿@using Models
+@using Microsoft.AspNetCore.Components.Forms
+@using System.ComponentModel.DataAnnotations
+
+<EditForm Model="@CheckoutModel" OnValidSubmit="HandleSubmit">
+    <DataAnnotationsValidator />
+
+    <div>
+        <InputText id="firstName" @bind-Value="CheckoutModel.FirstName" placeholder=" " />
+        <label for="firstName">First Name</label>
+        <ValidationMessage For="@(() => CheckoutModel.FirstName)" />
+    </div>
+
+    <div>
+        <InputText id="lastName" @bind-Value="CheckoutModel.LastName" placeholder=" " />
+        <label for="lastName">Last Name</label>
+        <ValidationMessage For="@(() => CheckoutModel.LastName)" />
+    </div>
+
+    <div>
+        <InputText id="email" type="email" @bind-Value="CheckoutModel.Email" placeholder=" " />
+        <label for="email">E-Mail</label>
+        <ValidationMessage For="@(() => CheckoutModel.Email)" />
+    </div>
+
+    <div>
+        <InputText id="phone" type="tel" @bind-Value="CheckoutModel.Phone" placeholder=" " />
+        <label for="phone">Phone Number</label>
+        <ValidationMessage For="@(() => CheckoutModel.Phone)" />
+    </div>
+
+    <div>
+        <InputText id="city" @bind-Value="CheckoutModel.City" placeholder=" " />
+        <label for="city">City</label>
+        <ValidationMessage For="@(() => CheckoutModel.City)" />
+    </div>
+
+    <div>
+        <InputText id="street" @bind-Value="CheckoutModel.Street" placeholder=" " />
+        <label for="street">Street Address</label>
+        <ValidationMessage For="@(() => CheckoutModel.Street)" />
+    </div>
+
+    <div>
+        <InputText id="zipCode" type="tel" @bind-Value="CheckoutModel.ZipCode" placeholder=" " />
+        <label for="zipCode">ZIP Code</label>
+        <ValidationMessage For="@(() => CheckoutModel.ZipCode)" />
+    </div>
+
+    <button type="submit">Confirm Order</button>
+</EditForm>
+
+@code {
+    [Parameter] public Checkout CheckoutModel { get; set; } = new Checkout();
+    [Parameter] public EventCallback OnSubmit { get; set; }
+
+    private async Task HandleSubmit()
+    {
+        await OnSubmit.InvokeAsync();
+    }
+}
