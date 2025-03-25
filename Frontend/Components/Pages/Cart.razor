@@ -8,7 +8,13 @@
 
 <PageTitle>Cart</PageTitle>
 
-<div class="cartContainer">
+
+
+<article class="cartContainer">
+
+    <header>
+        <h1>Cart</h1>
+    </header>
 
     @if (_movies == null || !_movies.Any())
     {
@@ -18,24 +24,33 @@
     {
         _totalPrice = 0;
 
-        <div class="cartItems">
-            @foreach (var movieId in _cart)
-            {
-                var movie = _movies.FirstOrDefault(b => b.Id == movieId);
-                if (movie != null)
+        <section>
+            <ul class="cartItems">
+                @foreach (var movieId in _cart)
                 {
-                    <CartItem Movie="movie" Cart="_cart" OnCartUpdated="UpdateCart" />
-                    _totalPrice += movie.Price;
-                }
-            }
-        </div>
+                    var movie = _movies.FirstOrDefault(b => b.Id == movieId);
+                    if (movie != null)
+                    {
+                        <li>
+                            <CartItem Movie="movie" Cart="_cart" OnCartUpdated="UpdateCart" />
+                        </li>
 
-        <p class="totalPrice"><span>Total Price:</span> $@Math.Round(_totalPrice, 2)</p>
+                        _totalPrice += movie.Price;
+                    }
+                }
+            </ul>
+        </section>
+
+        <section>
+            <p class="totalPrice"><span>Total Price:</span> $@Math.Round(_totalPrice, 2)</p>
+        </section>
     }
 
-    <CheckoutForm CheckoutModel="@_checkout" OnSubmit="HandleSubmit" />
+    <section class="formSection">
+        <CheckoutForm CheckoutModel="@_checkout" OnSubmit="HandleSubmit" />
+    </section>
 
-</div>
+</article>
 
 @code {
     private List<Movie> _movies = new();

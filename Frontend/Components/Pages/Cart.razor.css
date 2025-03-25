@@ -5,6 +5,10 @@
     padding: 60px 15px;
 }
 
+.cartContainer header h1 {
+    display: none;
+}
+
 .cartContainer .cartItems {
     display: flex;
     flex-direction: row;
@@ -12,6 +16,7 @@
     justify-content: center;
     gap: 20px;
     max-width: 720px;
+    list-style: none;
 }
 
 .cartContainer .totalPrice {
@@ -24,7 +29,13 @@
     color: grey;
 }
 
-.cartContainer ::deep form {
+.cartContainer .formSection {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.cartContainer .formSection ::deep form {
     width: 100%;
     max-width: 350px;
 }

@@ -1,18 +1,18 @@
 ﻿@using Models
 @using Frontend.Components.Pages.UIComponents
 
-<div class="cartItem">
+<article class="cartItem">
     <a href="/movies/@Movie.Id">
-        <img src="@Movie.ImageUrl" alt="Movie Cover" width="200" />
+        <img src="@Movie.ImageUrl" alt="Movie cover for @Movie.Title" width="200">
     </a>    
 
-    <div class="itemInfo">
-        <p class="title">@Movie.Title</p>
+    <section class="itemInfo">
+        <h3 class="title">@Movie.Title</h3>
         <p class="actors">@string.Join(", ", @Movie.Actors)</p>
         <p class="price">$@Movie.Price</p>
         <AddRemove MovieId=Movie.Id Cart=Cart OnCartUpdated="OnCartUpdated" />
-    </div>
-</div>
+    </section>
+</article>
 
 @code {
     [Parameter] public required Movie Movie { get; set; }

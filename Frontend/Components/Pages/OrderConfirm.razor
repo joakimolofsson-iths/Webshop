@@ -7,8 +7,11 @@
 
 <PageTitle>Order Confirmation</PageTitle>
 
-<div class="orderContainer">
-    <h1>Order Confirmation</h1>
+<article class="orderContainer">
+
+    <header>
+        <h1>Order Confirmation</h1>
+    </header>    
 
     @if (_movies == null || !_movies.Any())
     {
@@ -48,7 +51,7 @@
         </section>
     }
 
-</div>
+</article>
 
 @code {
     private List<Movie> _movies = new();

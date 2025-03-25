@@ -28,8 +28,12 @@
     word-break: break-word;
 }
 
-.movieDetailsContainer .movieDetails .darkerColor {
+.movieDetailsContainer .movieDetails dt {
     color: grey;
+}
+
+.movieDetailsContainer .movieDetails dd {
+    margin-bottom: 1rem;
 }
 
 .movieDetailsContainer .movieDetails .ratingColor {

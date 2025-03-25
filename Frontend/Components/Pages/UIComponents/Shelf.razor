@@ -9,17 +9,17 @@
     <div class="scrollableShelf">
         @foreach(var movie in Movies)
         {
-            <article class="vhsContainer @(movie == SelectedMovie ? "expanded" : "" )" @onclick="() => ToggleExpanded(movie)">
+            <article class="vhsContainer @(movie == SelectedMovie ? "expanded" : "" )" @onclick="() => ToggleExpanded(movie)" tabindex="0">
 
                 <div class="vhsFront">
-                    <p>@movie.Title</p>
-                    <img src="@vhsFrontImageMap[movie]" alt="VHS Tape" />
+                    <h3>@movie.Title</h3>
+                    <img src="@vhsFrontImageMap[movie]" alt="VHS Tape">
                 </div>
 
                 <div class="vhsSide">
                     <p class="price">$@movie.Price</p>
                     <a href="/movies/@movie.Id">
-                        <img src="@movie.ImageUrl" alt="Movie Cover" />
+                        <img src="@movie.ImageUrl" alt="Poster image for @movie.Title">
                     </a>
                     <AddRemove MovieId=movie.Id Cart=Cart />
                 </div>

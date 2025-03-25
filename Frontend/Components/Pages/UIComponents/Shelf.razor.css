@@ -78,11 +78,12 @@
     border: 2px solid white;
 }
 
-.shelfContainer .scrollableShelf .vhsContainer .vhsFront p {
+.shelfContainer .scrollableShelf .vhsContainer .vhsFront h3 {
     position: absolute;
     writing-mode: vertical-lr;
     text-align: center;
     font-size: 1.5rem;
+    font-weight: normal;
     color: black;
 }
 
@@ -171,7 +172,7 @@
         width: 110px;
     }
 
-    .shelfContainer .scrollableShelf .vhsContainer .vhsFront p {
+    .shelfContainer .scrollableShelf .vhsContainer .vhsFront h3 {
         font-size: 2rem;
     }
 

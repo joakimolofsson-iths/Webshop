@@ -6,16 +6,20 @@ nav ::deep a .icon {
     background-color: black;
 }
 
-nav .navItem {
+nav .navList {
+    list-style: none;
+}
+
+nav .navList .navItem {
     position: fixed;
     top: 10px;
     z-index: 10;
 }
 
-nav .navItem:first-child {
+nav .navList .navItem:first-child {
     left: 10px;
 }
 
-nav .navItem:last-child {
+nav .navList .navItem:last-child {
     right: 10px;
 }

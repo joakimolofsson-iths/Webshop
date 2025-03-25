@@ -1,9 +1,24 @@
-﻿.cartContainer form div {
+﻿.formSection form {
+    width: 100%;
+    max-width: 350px;
+}
+
+.formSection form div {
     position: relative;
     margin-bottom: 15px;
 }
 
-.cartContainer form div ::deep input {
+.formSection form fieldset {
+    border: none;
+    width: 100%;
+    max-width: 350px;
+}
+
+.formSection form legend {
+    display: none;
+}
+
+.formSection form div ::deep input {
     width: 100%;
     padding: .5rem;
     font-size: 1rem;
@@ -13,49 +28,49 @@
     background-color: rgb(38, 38, 38);
 }
 
-.cartContainer form div ::deep input.modified.valid {
+.formSection form div ::deep input.modified.valid {
     border-bottom-color: lime;
 }
 
-.cartContainer form div ::deep input.invalid {
+.formSection form div ::deep input.invalid {
     border-bottom-color: red;
 }
 
-.cartContainer form div ::deep input:focus {
+.formSection form div ::deep input:focus {
     outline: none;
     border-bottom-color: white;
 }
 
-.cartContainer form div ::deep input:-webkit-autofill,
-.cartContainer form div ::deep input:-webkit-autofill:hover,
-.cartContainer form div ::deep input:-webkit-autofill:focus,
-.cartContainer form div ::deep input:-webkit-autofill:active {
+.formSection form div ::deep input:-webkit-autofill,
+.formSection form div ::deep input:-webkit-autofill:hover,
+.formSection form div ::deep input:-webkit-autofill:focus,
+.formSection form div ::deep input:-webkit-autofill:active {
     transition: background-color 5000s ease-in-out 0s;
 }
 
-.cartContainer form div ::deep input:-webkit-autofill::first-line {
+.formSection form div ::deep input:-webkit-autofill::first-line {
     color: white !important;
 }
 
-.cartContainer form div ::deep input:focus + label,
-.cartContainer form div ::deep input:not(:placeholder-shown) + label {
+.formSection form div ::deep input:focus + label,
+.formSection form div ::deep input:not(:placeholder-shown) + label {
     display: none;
 }
 
-.cartContainer form div label {
+.formSection form div label {
     position: absolute;
     top: 8px;
     left: 8px;
     color: grey;
 }
 
-.cartContainer form div ::deep .validation-message {
+.formSection form div ::deep .validation-message {
     margin-top: 5px;
     padding-left: 5px;
     color: red;
 }
 
-.cartContainer form button {
+.formSection form button {
     all: unset;
     display: block;
     width: 100%;
@@ -68,6 +83,6 @@
     cursor: pointer;
 }
 
-.cartContainer form button:hover {
+.formSection form button:hover {
     background-color: #00b300;
 }

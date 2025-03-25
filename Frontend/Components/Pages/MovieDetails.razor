@@ -13,10 +13,10 @@
 }
 else
 {
-    <div class="movieDetailsContainer">
+    <article class="movieDetailsContainer">
 
         <div class="movieImage">
-            <img src="@_movie.ImageUrl" />
+            <img src="@_movie.ImageUrl" alt="Poster image for @_movie.Title">
         </div>
 
         <div class="movieDetails">
@@ -27,26 +27,29 @@ else
             
             <br />
 
-            <p><span class="darkerColor">Director</span></p>
-            <p>@_movie.Director</p>
-            <br />
+            <dl>
+                <dt>Director</dt>
+                <dd>@_movie.Director</dd>
 
-            <p><span class="darkerColor">Writers</span></p>
-            <p>@string.Join(", ", _movie.Writers)</p>
-            <br />
+                <dt>Writers</dt>
+                <dd>@string.Join(", ", _movie.Writers)</dd>
 
-            <p><span class="darkerColor">Actors</span></p>
-            <p>@string.Join(", ", _movie.Actors)</p>
-            <br />
+                <dt>Actors</dt>
+                <dd>@string.Join(", ", _movie.Actors)</dd>
 
-            <p><span class="darkerColor">Story</span></p>
-            <p>@_movie.Description</p>
-            <br />
+                <dt>Story</dt>
+                <dd>@_movie.Description</dd>
 
+                <dt>Release Year</dt>
+                <dd>@_movie.ReleaseYear</dd>
 
-            <p><span class="darkerColor">Release Year:</span> @_movie.ReleaseYear</p>
-            <p><span class="darkerColor">Length:</span> @_movie.Length min</p>
-            <p><span class="darkerColor">Rating:</span> <span class="ratingColor">@_movie.Rating</span></p>
+                <dt>Length</dt>
+                <dd>@_movie.Length min</dd>
+
+                <dt>Rating</dt>
+                <dd><span class="ratingColor">@_movie.Rating</span></dd>
+            </dl>
+
             <br />
 
             <p class="moviePrice">$@_movie.Price</p>
@@ -56,7 +59,7 @@ else
 
         </div>
 
-    </div>
+    </article>
 }
 
 @code {

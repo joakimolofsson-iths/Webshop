@@ -23,6 +23,7 @@
 .cartItem .itemInfo .title {
     font-family: Monster, monospace, sans-serif;
     font-size: 1.5rem;
+    font-weight: normal;
     color: red;
     word-break: break-word;
 }
